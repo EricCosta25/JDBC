@@ -10,7 +10,7 @@ public class GerenciadorSistema {
 	}
 	
 	public void cadastrarFun(Funcionario f) throws SQLException{
-		String value="'"+f.getMatricula()+"','"+f.getNome()+"','"+f.getIdade()+"','"+f.getCargo()+"','"+f.getSalario()+"','"+f.getTelefone();
+		String value="'"+f.getMatricula()+"','"+f.getNome()+"','"+f.+"','"+f.getCargo()+"','"+f.getSalario()+"','"+f.getTelefone();
 		jdbc.insert("SCP..Pais",value);
 	}
 	public void editarFun(Funcionario f) throws SQLException{
@@ -47,7 +47,7 @@ public class GerenciadorSistema {
 		GerenciadorSistema GS=new GerenciadorSistema();
 		GS.pesquisarFun(5);
 		//GS.cadastrarEmpresa(new Empresa());
-		GS.removerEmpresa(0);
+		//GS.removerEmpresa(0);
 	}
 	
 

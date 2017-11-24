@@ -1,15 +1,15 @@
 public class Funcionario {
 	private int matricula;
 	private String nome;
-	private int idade;
+	private int codEmpresa;
 	private String cargo;
 	private float salario;
 	private String telefone;
 	
-	Funcionario(int matricula, String nome, int idade,String cargo, float salario){
+	Funcionario(int matricula, String nome, int codEmpresa, String cargo, float salario){
 		this.matricula=matricula;
 		this.nome=nome;
-		this.idade=idade;
+		this.codEmpresa=codEmpresa;
 		this.cargo=cargo;
 		this.salario=salario;
 	}
@@ -28,11 +28,11 @@ public class Funcionario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public int getIdade() {
-		return idade;
+	public int getCodEmpresa() {
+		return codEmpresa;
 	}
-	public void setIdade(int idade) {
-		this.idade = idade;
+	public void setCodEmpresa(int codEmpresa) {
+		this.codEmpresa = codEmpresa;
 	}
 	public String getCargo() {
 		return cargo;
