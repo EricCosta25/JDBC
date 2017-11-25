@@ -13,8 +13,15 @@ public class GerenciadorJDBC {
 	private PreparedStatement  pstm=null;
 	private String sql="";
 	
-	public void startBank() throws SQLException{
-		conn=DriverManager.getConnection(banco.driver());
+	public boolean startBank(){
+		try {
+			conn=DriverManager.getConnection(banco.driver());
+			return true;
+		} catch (SQLException e) {
+			return false;
+			//e.printStackTrace();
+		}
+		
 	}
 	
 	public ArrayList select(String coluna,String tabela, String condicao) throws SQLException{
@@ -27,24 +34,24 @@ public class GerenciadorJDBC {
 		return buscarNoBanco(sql);
 	}
 	
-	public void insert(String tabela, String valores) throws SQLException{
+	public boolean insert(String tabela, String valores) throws SQLException{
 		this.sql=banco.sqlInsert(tabela, valores);
-		EntradaNoBanco(sql);
+		return EntradaNoBanco(sql);
 	}
 	
-	public void Update(String tabela, String values, String condicao) throws SQLException{
+	public boolean Update(String tabela, String values, String condicao) throws SQLException{
 		this.sql=banco.sqlUpdate(tabela, values, condicao);
-		EntradaNoBanco(sql);
+		return EntradaNoBanco(sql);
 	}
 	
-	public void delete(String tabela, String condicao) throws SQLException{
+	public boolean delete(String tabela, String condicao) throws SQLException{
 		this.sql=banco.sqlDelete(tabela, condicao);
-		EntradaNoBanco(sql);
+		return EntradaNoBanco(sql);
 	}
 	
-	public void delete(String tabela) throws SQLException{
+	public boolean deleteTabela(String tabela) throws SQLException{
 		this.sql=banco.sqlDelete(tabela);
-		EntradaNoBanco(sql);
+		return EntradaNoBanco(sql);
 	}
 	
 	
@@ -74,14 +81,40 @@ public class GerenciadorJDBC {
 			}
 			
 		} catch (SQLException e) { 
-			System.out.println("execulteQuery");
-			e.printStackTrace();
+			return funcionarios=new ArrayList();
 		}
-		return funcionario;
+		return funcionarios;
 	}
 	
-	public void EntradaNoBanco(String Sql) throws SQLException{
-		pstm=conn.prepareStatement(sql);
-		pstm.execute();
+	public boolean removeTools(String coluna,String tabela,String condicao) {
+		this.sql=banco.sqlSelect(coluna, tabela, condicao);
+		try {
+			pstm=conn.prepareStatement(sql);
+			String r="";
+			ResultSet result=pstm.executeQuery();
+			while(result.next()){
+				r=result.getString(1);
+				delete(tabela, coluna+"="+r);
+			}
+			return true;
+		} catch (SQLException e) {
+			//e.printStackTrace();
+			return false;
+		}
+		
 	}
+	
+	public boolean EntradaNoBanco(String Sql){
+		try {
+			pstm=conn.prepareStatement(sql);
+			pstm.execute();
+			return true;
+		} catch (SQLException e) {
+			//e.printStackTrace();
+			return false;
+		}
+		//
+		
+	}
+	
 }

@@ -1,11 +1,18 @@
-
+import java.util.ArrayList;
 
 public class Empresa {
 	private int cnpj;
 	private String nome;
 	private String endereco;
 	private String telefone;
+	private ArrayList<Funcionario>funcionarios;
 	
+	public Empresa(int cnpj, String nome, String endereco, String fone) {
+		this.cnpj=cnpj;
+		this.nome=nome;
+		this.endereco=endereco;
+		this.telefone=fone;
+	}
 	public String getTelefone() {
 		return telefone;
 	}

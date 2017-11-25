@@ -3,37 +3,24 @@ import java.sql.SQLException;
 public class principal {
 
 	public static void main(String[] args) throws SQLException {
-		/*bancoSqlServer banco= new bancoSqlServer();
-		banco.startConnection();
-		banco.createTable("create table funcionario..ficha (nome varchar(20) not null,"
-														+ "idade int not null,"
-														+ "cargo varchar(20) not null)");
-														//+ "salario decimal(4,2) not null)");*/
-		/*Funcionario f=new Funcionario("eric",27,"engenheiro",350);
-		System.out.println(f.getNome());
-		Empresa e=new Empresa();
-		//e.cadastrarFun(f);
-		//e.atualizarFun(f);
-		
-		System.out.println("'D''maria'");
-		
-		//banco.createTable("create table SCP..cid(id int not null, nome varchar(20) not null)");
-		//banco.insert("insert into SCP..cid (id,nome) values(1,'erick')");
-		//banco.update("Update SCP..cid set nome='eric' where id=1");
-		//banco.select("SELECT * FROM SCP..cid");
-		//banco.delete("delete SCP..cid");
-		//banco.drop("Drop table SCP..cid");*/
-		Empresa e=new Empresa();
-		//e.teste();
+		GerenciadorSistema GS=new GerenciadorSistema();
+		//GS.pesquisarFun(2);
+		//GS.listarFun(2);
+		//GS.listarEmpresa();
+		//GS.pesquisarEmpresa(1/);
+		Empresa e=new Empresa(4,"hs","rua cheia","999988880");
+		Empresa e1=new Empresa(5,"hs","rua cheia","999988880");
+		//GS.cadastrarEmpresa(e);
+		//GS.editarEmpresa(e);
+		//GS.removerEmpresa(1);
+		Funcionario f=new Funcionario(1,"ana",4,"advogada",350,"343455662");
+		//GS.cadastrarFun(f);
+		//GS.editarFun(f);
+		//GS.removerFun(4);
+		f=new Funcionario(10,"maria",2,"medica",350,"222255");
+		//GS.limpaTabelaFuncionario();
+		System.out.println(GS.editarEmpresa(e1));
 	}
 
 }
-//cadastrar fun
-//editar fun
-//listar todos fun
-//pesquisar fun(matricula)
-//remover fun()
-//editar empresa
-//
-
 

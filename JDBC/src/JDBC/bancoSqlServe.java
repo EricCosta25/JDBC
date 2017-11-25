@@ -15,15 +15,13 @@ public class bancoSqlServe {
 	private static String pass="05061991";
 	private static String sql;
 	
-	//Classe de inicialização de variaveis sem parametros
 	public static String driver() {
 		String dbUrl = "jdbc:sqlserver://localhost\\MSSQLSERVER";			  	
 		String user = "eric";
 		String pass = "05061991";
 		return dbUrl+";user="+user+";password="+pass;
 	}
-	
-	//Sobrecarga do metodo Driver 
+		
 	public String driver(String dbUrl, String user, String pass){
 		this.dbUrl=dbUrl;
 		this.user=user;
@@ -31,7 +29,7 @@ public class bancoSqlServe {
 		return dbUrl+";user="+user+";password="+pass;
 	}
 	
-	//inialização do banco de dados, involto de (trey catch) Para posiveis erros
+	
 	public static void iniciarBanco() {
 			try {
 				conn=DriverManager.getConnection(dbUrl, user , pass);
@@ -44,7 +42,7 @@ public class bancoSqlServe {
 		
 	}
 	
-//Metodo tanto adiciona e printa e retorna os funcionarios
+
 	public static ArrayList select() {
 		int amountColumn;
 		ArrayList funcionarios=new ArrayList();
@@ -75,7 +73,7 @@ public class bancoSqlServe {
 		driver();
 		iniciarBanco();
 		select();*/
-		GerenciadorJDBC jdbc=new GerenciadorJDBC();//Criando objeto Gerenciador JDBD contendo funções de basicas
+		GerenciadorJDBC jdbc=new GerenciadorJDBC();
 		jdbc.startBank();
 		jdbc.select("*", "SCP..Cliente");
 		

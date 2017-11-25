@@ -1,5 +1,5 @@
 package JDBC;
-// basicamente implementa a interface Banco 
+
 public class SqlServer implements interfaceBanco{
 	private String dbUrl;
 	private String user;
@@ -7,7 +7,7 @@ public class SqlServer implements interfaceBanco{
 	private String sql;
 
 	@Override
-	public String driver() {//Construtor da classe Driver caso não seja iniciada pelo usuario
+	public String driver() {
 		String dbUrl = "jdbc:sqlserver://localhost\\MSSQLSERVER";			  	
 		String user = "eric";
 		String pass = "05061991";
@@ -22,7 +22,7 @@ public class SqlServer implements interfaceBanco{
 	}
 	
 	@Override
-	public String sqlSelect(String coluna,String tabela,String condicao) {// classe select retorna as variaveis para visualição do banco de dados
+	public String sqlSelect(String coluna,String tabela,String condicao) {
 		System.out.println("select "+ coluna +" from "+tabela +" where " + condicao);
 		return "select "+ coluna +" from "+tabela +" where " + condicao;
 	}
@@ -41,7 +41,7 @@ public class SqlServer implements interfaceBanco{
 
 	@Override
 	public String sqlUpdate(String tabela,String values, String condicao) {
-		System.out.println("");
+		System.out.println("Update "+tabela+" set " + values + "where " + condicao);
 		return "Update "+tabela+" set " + values + "where " + condicao;
 	}
 
@@ -53,6 +53,7 @@ public class SqlServer implements interfaceBanco{
 	
 	@Override
 	public String sqlDelete(String tabela) {
+		System.out.println("delete from " + tabela);
 		return "delete from " + tabela;
 	}
 }
